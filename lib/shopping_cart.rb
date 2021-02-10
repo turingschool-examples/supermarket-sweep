@@ -12,4 +12,8 @@ class ShoppingCart
   def add_product(product)
     @products << product
   end
+
+  def details
+    {name: "#{name}", capacity: capacity.delete('items').to_i}
+  end
 end
