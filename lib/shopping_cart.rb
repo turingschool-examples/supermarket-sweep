@@ -24,5 +24,18 @@ class ShoppingCart
     @products.sum do |product|
       product.quantity
     end
+    # count = 0
+    # @products.each do |product|
+    #   product.quantity += 1
+    # end
+    # count
+  end
+
+  def is_full?
+    if total_number_of_products > @capacity
+      true
+    else
+      false
+    end
   end
 end
