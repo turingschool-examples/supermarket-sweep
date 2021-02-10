@@ -19,7 +19,7 @@ class ShoppingCartTest < Minitest::Test
   end
 
   def test_it_can_have_different_attributes
-    skip
+    # skip
     cart = ShoppingCart.new("King Soopers", "30items")
 
     assert_equal 30, cart.capacity
@@ -95,5 +95,46 @@ class ShoppingCartTest < Minitest::Test
     assert_equal true, cart.is_full?
   end
 
+  def test_it_can_determine_if_cart_percentage_capacity
+    # skip
+    product1 = Product.new(:paper, "toilet paper", 3.70, "10")
+    product2 = Product.new(:meat, "chicken", 4.50, "2")
+    product3 = Product.new(:paper, "tissue paper", 1.25, "1")
+    cart = ShoppingCart.new("King Soopers", "30items")
+    cart.add_product(product1)
+    cart.add_product(product2)
+    cart.add_product(product3)
 
+    assert_equal 43.33, cart.percentage_occupied
+  end
+
+  def test_it_can_sort_by_product_quantity
+    # skip
+    product1 = Product.new(:paper, "toilet paper", 3.70, "10")
+    product2 = Product.new(:meat, "chicken", 4.50, "2")
+    product3 = Product.new(:paper, "tissue paper", 1.25, "1")
+    product4 = Product.new(:product, "apples", 0.99, "20")
+    cart = ShoppingCart.new("King Soopers", "30items")
+    cart.add_product(product1)
+    cart.add_product(product2)
+    cart.add_product(product3)
+    cart.add_product(product4)
+
+    assert_equal [product3, product2, product1, product4], cart.sorted_products_by_quantity
+  end
+
+  def test_it_can_breakdown_cart_by_category
+    # skip
+    product1 = Product.new(:paper, "toilet paper", 3.70, "10")
+    product2 = Product.new(:meat, "chicken", 4.50, "2")
+    product3 = Product.new(:paper, "tissue paper", 1.25, "1")
+    product4 = Product.new(:product, "apples", 0.99, "20")
+    cart = ShoppingCart.new("King Soopers", "30items")
+    cart.add_product(product1)
+    cart.add_product(product2)
+    cart.add_product(product3)
+    cart.add_product(product4)
+
+    assert_equal Hash[:meat, product2], cart.product_breakdown
+  end
 end

@@ -11,6 +11,21 @@ class ShoppingCart
     @products = []
   end
 
+  def product_breakdown
+    Hash[:meat, @products.select { |product| product.category == :meat }]
+  end
+
+  def sorted_products_by_quantity
+    @products.sort_by do |product|
+      product.quantity
+    end
+  end
+
+  def percentage_occupied
+    unrounded_percent = total_number_of_products/@capacity.to_f * 100
+    rounded_percent = unrounded_percent.round(2)
+  end
+
   def is_full?
     total_number_of_products > @capacity
   end
