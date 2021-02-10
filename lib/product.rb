@@ -8,6 +8,8 @@ class Product
     @quantity = quantity.to_i
   end
 
+  # returns the sum of the unit price multiplied by the quantity
+  # no argument -> float
   def total_price
     unit_price * quantity
   end
