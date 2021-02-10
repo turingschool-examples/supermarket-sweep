@@ -38,4 +38,8 @@ class ShoppingTest < Minitest::Test
     @cart.add_product(@product3)
     assert_equal @cart.total_number_of_products, 13
   end
+
+  def test_cart_is_full
+    assert @cart.is_full?
+  end
 end
