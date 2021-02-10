@@ -20,7 +20,7 @@ class ShoppingCartTest < Minitest::Test
   end
 
   def test_it_has_products
-    assert_equal "30items", @cart.capacity
+    assert_equal 30, @cart.capacity
   end
 
   def test_it_has_no_products
@@ -50,11 +50,13 @@ class ShoppingCartTest < Minitest::Test
   end
 
   def test_it_can_return_cart_is_full
-    skip
+    # skip
     @cart.add_product(@product1)
     @cart.add_product(@product2)
     @cart.add_product(@product3)
 
+    @cart.products
+    
     assert_equal false, @cart.is_full?
   end
 

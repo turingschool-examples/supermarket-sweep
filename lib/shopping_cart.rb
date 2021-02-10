@@ -1,11 +1,12 @@
 class ShoppingCart
+
   attr_reader :name,
               :capacity,
               :products
 
   def initialize(name, capacity)
     @name = name
-    @capacity = capacity
+    @capacity = capacity.slice(/\d+/).to_i
     @products = []
   end
 
@@ -34,11 +35,13 @@ class ShoppingCart
   end
 
   def is_full?
-    if @cart.total_number_of_products > @cart.capacity.split(/\D+/).to_i
+
+    if total_number_of_products > @capacity
       true
     else
       false
     end
+
   end
 
   def products_by_category(category)
