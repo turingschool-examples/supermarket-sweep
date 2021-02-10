@@ -39,11 +39,11 @@ class ShoppingCartTest < Minitest::Test
     cart.add_product(product3)
 
     assert_equal 13, cart.total_number_of_products
-    # assert_equal false, cart.is_full?
-    #
-    # cart.add_product(product4)
-    #
-    # assert_equal true, cart.is_full?
+    assert_equal false, cart.is_full?
+
+    cart.add_product(product4)
+
+    assert_equal true, cart.is_full?
 
     cart.products_by_category(:paper)
 

@@ -22,15 +22,19 @@ class ShoppingCart
   end
 
   def total_number_of_products
-    prior = 0
+    initial_products = 0
     @products.each do |product|
-      product.quantity += prior.quantity
-    prior
+      initial_products += product.quantity
     end
+    initial_products
   end
 
   def is_full?
-    return @capacity.to_i > 30
+    if capacity.to_i > total_number_of_products
+      false
+    else
+      true
+    end
   end
 
   def products_by_category(type)
