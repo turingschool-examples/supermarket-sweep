@@ -16,4 +16,12 @@ class ShoppingCart
   def details
     {name: "#{name}", capacity: capacity.delete('items').to_i}
   end
+
+  def total_number_of_products
+    total_sum = 0
+    @products.each do |product|
+      total_sum += product.quantity
+    end
+    total_sum
+  end
 end
