@@ -41,4 +41,5 @@ class ShoppingCart
   def products_by_category(category_symbol)
     @products.find_all {|product| product.category == category_symbol}
   end
+  
 end

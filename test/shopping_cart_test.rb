@@ -65,4 +65,5 @@ class ShoppingCartTest < Minitest::Test
 
     assert_equal results, @cart.products_by_category(:paper)
   end
+  
 end
