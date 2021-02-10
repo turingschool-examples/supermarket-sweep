@@ -8,4 +8,8 @@ class ShoppingCart
     @capacity = capacity
     @products = []
   end
+
+  def add_product(product)
+    @products << product
+  end
 end
