@@ -14,7 +14,7 @@ class ShoppingCart
   end
 
   def details
-    detail = {name: name, capacity: capacity }
+    detail = {name: name, capacity: capacity}
   end
 
   def total_number_of_products
