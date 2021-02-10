@@ -34,5 +34,4 @@ class ShoppingCartTest < Minitest::Test
     result = {name: "King Soopers", capacity: 30}
     assert_equal result, cart.details
   end
-
 end

@@ -17,5 +17,4 @@ class ShoppingCart
   def details
     {name: "#{@name}", capacity: capacity}
   end
-
 end
