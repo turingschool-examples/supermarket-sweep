@@ -12,4 +12,11 @@ class ShoppingCart
   def add_product(item_name)
     @products << item_name
   end
+
+  def details
+    {
+    name: @name,
+    capacity: @capacity
+    }
+  end
 end
