@@ -15,4 +15,8 @@ class ShoppingCartTest < Minitest::Test
   def test_it_has_a_name
     assert_equal "King Soopers", @cart.name
   end
+
+  def test_it_has_a_capacity
+    assert_equal "30items", @cart.capacity
+  end
 end
