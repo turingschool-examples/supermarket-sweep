@@ -14,17 +14,16 @@ class ShoppingCart
     @products << product
   end
 
-  # def details
-  #   [apple, 1, banana, 2]
-  #
-  # {apple => 1, banana => 2}
-  #
-  #   h3 = Hash[a3.map {|key, value| [key, value]}]
-  #   puts "h3: #{h3.inspect}"
-  #
-  #   h3: {["orange", "seedless"]=>3, "apple"=>1, "banana"=>2}
-  #
-  # end
+  def details
+      details_hash = {
+        :name => '',
+        :capacity => ''
+      }
+      hash.map do |name, capacity|
+        hash[:name] = @name
+        hash[:capacity] = @capacity
+      end
+    end
 
   def total_number_of_products
     total_products = 0

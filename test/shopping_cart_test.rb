@@ -35,7 +35,6 @@ class ShoppingCartTest < Minitest::Test
   end
 
   def test_it_can_return_cart_details
-    skip
     expected = {name: "King Soopers", capacity: 30}
 
     assert_equal expected, @cart.details
@@ -50,13 +49,12 @@ class ShoppingCartTest < Minitest::Test
   end
 
   def test_it_can_return_cart_is_full
-    # skip
     @cart.add_product(@product1)
     @cart.add_product(@product2)
     @cart.add_product(@product3)
 
     @cart.products
-    
+
     assert_equal false, @cart.is_full?
   end
 
