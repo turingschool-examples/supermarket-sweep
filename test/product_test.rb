@@ -28,7 +28,7 @@ class ProductTest < Minitest::Test
   end
 
   def test_it_has_a_quantity
-    skip
+    # skip
     product = Product.new(:paper, 'toilet paper', 3.70, '10')
     assert_equal 10, product.quantity
   end
