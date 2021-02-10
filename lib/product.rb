@@ -22,9 +22,4 @@ class Product
     @horded = true
   end
 
-
-
-
-
-
 end

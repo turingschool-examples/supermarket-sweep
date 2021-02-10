@@ -43,4 +43,11 @@ class Shopping_cart
     list_of_type
   end
 
+  def percentage_occupied
+    load = self.total_number_of_products
+    percent_full = ((load.to_f / @capacity.to_f)*100).round(2)
+    return percent_full
+  end
+
+
 end
