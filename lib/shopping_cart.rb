@@ -36,12 +36,23 @@ class ShoppingCart
   end
 
   def percentage_occupied
-    # require 'pry'; binding.pry
-    if (decimal_occ.round(2)) > 1.00
-      "#{((decimal_occ * 100) -100).to_i} % Over Capacity"
+    if over_capacity
+      "#{percent_over} % Over Capacity"
     else
+      capacity_occupied
+    end
+  end
+
+  def over_capacity
+    (decimal_occ.round(2)) > 1.00
+  end
+
+  def capacity_occupied
     (decimal_occ * 100).round(2)
   end
+
+  def percent_over
+    ((decimal_occ * 100) -100).to_i
   end
 
   def decimal_occ
