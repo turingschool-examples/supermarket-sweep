@@ -27,4 +27,9 @@ class ShoppingCartTest < Minitest::Test
     assert_equal [@product1, @product2], @cart.products
     assert_equal 2, @cart.products.length
   end
+
+  def test_it_can_display_details
+    expected = {name: "King Soopers", capacity: 30}
+    assert_equal expected, @cart.details
+  end
 end
