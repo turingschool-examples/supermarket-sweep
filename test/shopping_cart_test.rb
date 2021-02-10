@@ -75,4 +75,52 @@ class ShoppingCartTest < Minitest::Test
     assert_equal [product1, product3], cart.products_by_category(:paper)
     assert_equal [product2], cart.products_by_category(:meat)
   end
+
+  def test_it_can_get_percentage_of_cart_occupied
+    cart = ShoppingCart.new("King Soopers", "30items")
+    product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
+    product2 = Product.new(:meat, 'chicken', 4.50, '2')
+    product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
+
+    cart.add_product(product1)
+    cart.add_product(product2)
+    cart.add_product(product3)
+
+    assert_equal 43.3, cart.percentage_occupied
+  end
+
+  def test_it_can_sort_by_quantity
+    skip
+    cart = ShoppingCart.new("King Soopers", "30items")
+    product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
+    product2 = Product.new(:meat, 'chicken', 4.50, '2')
+    product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
+    product4 = Product.new(:produce, 'apples', 0.99, '20')
+
+    cart.add_product(product1)
+    cart.add_product(product2)
+    cart.add_product(product3)
+    cart.add_product(product4)
+
+    assert_equal [product4, product1, product2, product3], cart.sorted_products_by_quantity
+  end
+
+  def test_it_has_product_breakdown
+    skip
+    cart = ShoppingCart.new("King Soopers", "30items")
+    product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
+    product2 = Product.new(:meat, 'chicken', 4.50, '2')
+    product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
+    product4 = Product.new(:produce, 'apples', 0.99, '20')
+
+    cart.add_product(product1)
+    cart.add_product(product2)
+    cart.add_product(product3)
+    cart.add_product(product4)
+    exppected = {:meat => [product2],
+                 :paper => [product1, product2],
+                 :produce => [product4]
+                }
+    assert_equal expected, cart.product_breakdown
+  end
 end
