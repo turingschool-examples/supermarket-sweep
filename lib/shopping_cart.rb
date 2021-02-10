@@ -1,6 +1,7 @@
 class ShoppingCart
   attr_reader :name,
               :products
+
   def initialize(name, capacity)
     @name = name
     @capacity = capacity
@@ -36,11 +37,11 @@ class ShoppingCart
     end
   end
 
-  def percentage_occupied #todo refactor for readability
+  def percentage_occupied
     ((total_number_of_products / capacity.to_f) * 100).round(2)
   end
 
-  def sorted_products_by_quantity #todo refactor for readability
+  def sorted_products_by_quantity
     sorted_products = products.sort_by do |product|
       product.quantity
     end
