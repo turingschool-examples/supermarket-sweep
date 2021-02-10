@@ -31,12 +31,37 @@ class ShoppingCart
   end
 
   def is_full?
-    if total_number_of_products
+    change_capacity_to_int
+    if total_number_of_products >= @capacity
       true
+    else
+      false
     end
   end
 
   def products_by_category(category)
     @products.find_all {|product| product.category == category}
+  end
+
+  def percentage_occupied
+    (total_number_of_products.to_f / change_capacity_to_int).round(4) * 100
+  end
+
+  def sorted_products_by_quantity
+    @products.sort_by {|product| product.quantity}
+  end
+
+  def product_breakdown
+    breakdown_hash = Hash.new(0)
+    @products.map { 
+      |product| 
+      p breakdown_hash[product.category] != 0
+      if breakdown_hash[product.category] != 0
+        breakdown_hash[product.category].append(product)
+      else
+        breakdown_hash[product.category] = [product]
+      end
+    }
+    breakdown_hash
   end
 end

@@ -35,16 +35,42 @@ class ShoppingTest < Minitest::Test
 
   def test_total_number_of_products_correct
     @cart.add_product(@product3)
-    #binding.pry
     assert_equal @cart.total_number_of_products, 13
   end
 
   def test_cart_is_full
+
+    refute @cart.is_full?
+
+    product4 = Product.new(:produce, 'apples', 0.99, '20')
+    @cart.add_product(product4)
+
     assert @cart.is_full?
   end
 
   def test_products_by_category
     @cart.add_product(@product3)
     assert_equal @cart.products_by_category(:paper), [@product1, @product3]
+  end
+
+  def test_percentage_occupied
+    @cart.add_product(@product3)
+    assert_equal @cart.percentage_occupied, 43.33
+  end
+  
+  def test_sorted_products_by_quantity
+    @cart.add_product(@product3)
+    product4 = Product.new(:produce, 'apples', 0.99, '20')
+    @cart.add_product(product4)
+
+    assert_equal @cart.sorted_products_by_quantity, [@product3, @product2, @product1, product4]
+  end
+
+  def test_product_breakdown
+    @cart.add_product(@product3)
+    product4 = Product.new(:produce, 'apples', 0.99, '20')
+    @cart.add_product(product4)
+    binding.pry
+    assert_equal @cart.product_breakdown, {:meat => [@product2], :paper => [@product1,@product3], :produce => [product4]}
   end
 end
