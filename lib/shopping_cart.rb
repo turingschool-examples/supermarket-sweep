@@ -37,4 +37,7 @@ class ShoppingCart
     end
   end
 
+  def products_by_category(category)
+    @products.find_all {|product| product.category == category}
+  end
 end
