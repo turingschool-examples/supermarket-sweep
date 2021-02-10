@@ -10,5 +10,12 @@ class ShoppingCart
     capacity_to_integer = @capacity.delete("items").to_i
   end
 
+  def add_product(product)
+    @products << product
+  end
+
+  def details
+    {name: "#{@name}", capacity: capacity}
+  end
 
 end
