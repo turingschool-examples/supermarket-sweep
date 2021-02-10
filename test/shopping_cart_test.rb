@@ -39,13 +39,22 @@ class ShoppingCartTest < Minitest::Test
     @cart.add_product(@product1)
     @cart.add_product(@product2)
     @cart.add_product(@product3)
-
     assert_equal 13, @cart.total_number_of_products
   end
 
-  # def test_can_check_products_array_is_full
-  #   @cart.add_product(@product1)
-  #   @cart.add_product(@product2)
-  #   @card.add_product(@product3)
+  def test_capacity_checker_returns_boolean
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    @cart.add_product(@product4)
+    assert_equal true, @cart.capacity_checker
+  end
+
+  def test_can_check_products_array_is_full
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    assert_equal false, @cart.is_full?
+  end
 
 end
