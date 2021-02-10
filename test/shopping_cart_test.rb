@@ -12,7 +12,6 @@ class ShoppingTest < Minitest::Test
 
     @cart.add_product(@product1)
     @cart.add_product(@product2)
-    #binding.pry
   end
   def test_it_exists
     assert_instance_of ShoppingCart, @cart
@@ -36,10 +35,16 @@ class ShoppingTest < Minitest::Test
 
   def test_total_number_of_products_correct
     @cart.add_product(@product3)
+    #binding.pry
     assert_equal @cart.total_number_of_products, 13
   end
 
   def test_cart_is_full
     assert @cart.is_full?
+  end
+
+  def test_products_by_category
+    @cart.add_product(@product3)
+    assert_equal @cart.products_by_category(:paper), [@product1, @product3]
   end
 end
