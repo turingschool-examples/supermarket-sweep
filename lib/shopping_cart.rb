@@ -49,4 +49,12 @@ class ShoppingCart
   def sorted_products_by_quantity
     sorted_by_quantity = @products.sort {|product| product.quantity}
   end
+
+  def product_breakdown
+    results = Hash.new
+    @products.sort_by do |product|
+    results[product.category]
+    # require "pry"; binding.pry
+    end
+  end
 end
