@@ -31,6 +31,16 @@ class Shopping_cart
     else
       false
     end
-  end 
+  end
+
+  def produce_by_category(type)
+    list_of_type = []
+    @products.each do |item|
+      if item.category == type
+        list_of_type.append(item)
+      end
+    end
+    list_of_type
+  end
 
 end
