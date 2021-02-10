@@ -1,6 +1,5 @@
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/product'
+require_relative 'test_helper'
+
 
 class ProductTest < Minitest::Test
   #Iteration1
