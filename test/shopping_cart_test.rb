@@ -4,33 +4,32 @@ require './lib/shopping_cart'
 require './lib/product'
 
 class ShoppingCartTest < MiniTest::Test
-
   def test_it_exists
-    cart = ShoppingCart.new("King Soopers", "30items")
+    cart = ShoppingCart.new('King Soopers', '30items')
 
     assert_instance_of ShoppingCart, cart
   end
 
   def test_it_has_a_name
-    cart = ShoppingCart.new("King Soopers", "30items")
+    cart = ShoppingCart.new('King Soopers', '30items')
 
-    assert_equal "King Soopers", cart.name
+    assert_equal 'King Soopers', cart.name
   end
 
   def test_it_has_a_capacity
-    cart = ShoppingCart.new("King Soopers", "30items")
+    cart = ShoppingCart.new('King Soopers', '30items')
 
-    assert_equal 30 , cart.capacity
+    assert_equal 30, cart.capacity
   end
 
   def test_test_it_can_hold_products
-    cart = ShoppingCart.new("King Soopers", "30items")
+    cart = ShoppingCart.new('King Soopers', '30items')
 
     assert_equal [], cart.products
   end
 
   def test_it_can_add_products
-    cart = ShoppingCart.new("King Soopers", "30items")
+    cart = ShoppingCart.new('King Soopers', '30items')
     product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
     product2 = Product.new(:meat, 'chicken', 4.50, '2')
 
@@ -41,26 +40,26 @@ class ShoppingCartTest < MiniTest::Test
   end
 
   def test_i_can_get_cart_details
-    cart = ShoppingCart.new("King Soopers", "30items")
+    cart = ShoppingCart.new('King Soopers', '30items')
 
-    expected = {name: "King Soopers", capacity: 30}
+    expected = { name: 'King Soopers', capacity: 30 }
     assert_equal expected, cart.details
   end
 
   def test_get_total_products
-    cart = ShoppingCart.new("King Soopers", "30items")
+    cart = ShoppingCart.new('King Soopers', '30items')
     product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
     product2 = Product.new(:meat, 'chicken', 4.50, '2')
     product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
     cart.add_product(product1)
     cart.add_product(product2)
     cart.add_product(product3)
-    #require 'pry'; binding.pry
+    # require 'pry'; binding.pry
     assert_equal 13, cart.total_number_of_products
   end
 
   def test_default_cart_full
-    cart = ShoppingCart.new("King Soopers", "30items")
+    cart = ShoppingCart.new('King Soopers', '30items')
     product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
     product2 = Product.new(:meat, 'chicken', 4.50, '2')
     product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
@@ -74,7 +73,7 @@ class ShoppingCartTest < MiniTest::Test
   end
 
   def test_products_by_category
-    cart = ShoppingCart.new("King Soopers", "30items")
+    cart = ShoppingCart.new('King Soopers', '30items')
     product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
     product2 = Product.new(:meat, 'chicken', 4.50, '2')
     product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
@@ -84,6 +83,32 @@ class ShoppingCartTest < MiniTest::Test
     cart.add_product(product3)
     cart.add_product(product4)
 
-    assert_equal [product1,product3], cart.products_by_category(:paper)
+    assert_equal [product1, product3], cart.products_by_category(:paper)
+  end
+
+  def test_percentage_occupied
+    cart = ShoppingCart.new('King Soopers', '30items')
+    product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
+    product2 = Product.new(:meat, 'chicken', 4.50, '2')
+    product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
+    cart.add_product(product1)
+    cart.add_product(product2)
+    cart.add_product(product3)
+
+    assert_equal 43.33, cart.percentage_occupied
+  end
+
+  def test_sorted_products_by_quantity
+    cart = ShoppingCart.new('King Soopers', '30items')
+    product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
+    product2 = Product.new(:meat, 'chicken', 4.50, '2')
+    product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
+    product4 = Product.new(:produce, 'apples', 0.99, '20')
+    cart.add_product(product1)
+    cart.add_product(product2)
+    cart.add_product(product3)
+    cart.add_product(product4)
+
+    assert_equal [product4, product1, product2, product3], cart.sorted_products_by_quantity
   end
 end

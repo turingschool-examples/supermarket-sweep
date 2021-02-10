@@ -25,21 +25,22 @@ class ShoppingCart
   def total_number_of_products
     sum = 0
     @products.each do |product|
-    sum += product.quantity
+      sum += product.quantity
     end
     sum
   end
 
   def is_full?
-    if total_number_of_products > 30
-      true
-    else
-      false
-    end
+    total_number_of_products > 30
   end
+
   def products_by_category(category)
     @products.find_all do |product|
       product.category == category
     end
+  end
+
+  def percentage_occupied
+    (total_number_of_products.to_f / @capacity * 100).round(2)
   end
 end
