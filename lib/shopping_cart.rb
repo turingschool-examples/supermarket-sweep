@@ -48,7 +48,7 @@ class ShoppingCart
   end
 
   def product_breakdown
-      products.group_by do |product|
+    products.group_by do |product|
       products_by_category(product.category)
     end
   end

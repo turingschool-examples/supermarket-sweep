@@ -3,7 +3,6 @@ require 'minitest/pride'
 require './lib/shopping_cart'
 require './lib/product'
 
-
 class ShoppingCartTest < Minitest::Test
   def test_it_exists
     cart = ShoppingCart.new("King Soopers", "30items")
