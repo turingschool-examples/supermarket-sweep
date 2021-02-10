@@ -55,6 +55,19 @@ class ShoppingCartTest < Minitest::Test
     @cart.add_product(@product2)
     @cart.add_product(@product3)
     assert_equal 43.33, @cart.percentage_occupied
-    
+    product4 = Product.new(:produce, 'apples', 0.99, '20')
+    @cart.add_product(product4)
+    assert_equal 110.00, @cart.percentage_occupied
+    # assert_equal "10 % Over Capacity", @cart.percentage_occupied
+  end
+
+  def test_it_sorts_by_quantity
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    product4 = Product.new(:produce, 'apples', 0.99, '20')
+    @cart.add_product(product4)
+    expected = [product4, @product1, @product2, @product3]
+    assert_equal expected, @cart.sorted_products_by_quantity
   end
 end
