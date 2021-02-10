@@ -13,9 +13,24 @@ class Shopping_cart
     capacity.delete_suffix("items").to_i
   end
 
-
   def add_product(product)
     @products.append(product)
   end
+
+  def total_number_of_products
+    total_quantitiy = 0
+    @products.each do |product|
+      total_quantitiy += product.quantity
+    end
+    total_quantitiy
+  end
+
+  def is_full?
+    if total_number_of_products > @capacity
+      true
+    else
+      false
+    end
+  end 
 
 end
