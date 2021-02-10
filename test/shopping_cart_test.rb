@@ -8,6 +8,8 @@ class ShoppingTest < Minitest::Test
     @cart = ShoppingCart.new("King Soopers", "30items")
     @product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
     @product2 = Product.new(:meat, 'chicken', 4.50, '2')
+    @product3 = Product.new(:paper, 'tissue paper', 1.25, '1')
+
     @cart.add_product(@product1)
     @cart.add_product(@product2)
     #binding.pry
@@ -30,5 +32,10 @@ class ShoppingTest < Minitest::Test
     @cart.change_capacity_to_int
     @cart.find_details
     assert_equal @cart.details, {name: "King Soopers", capacity: 30}
+  end
+
+  def test_total_number_of_products_correct
+    @cart.add_product(@product3)
+    assert_equal @cart.total_number_of_products, 13
   end
 end
