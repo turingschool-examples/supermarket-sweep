@@ -35,4 +35,20 @@ class ShoppingCart
       product.category == category
     end
   end
+
+  def percentage_occupied
+    (total_number_of_products.to_f / @capacity.to_f * 100).round(2)
+  end
+
+  def sorted_products_by_quantity
+    @products.sort_by do |product|
+      product.quantity
+    end.reverse
+  end
+
+  def product_breakdown
+    listed_by_category = Hash.new
+    # products_by_category(category).each do |product|
+    # listed_by_category << :category => product
+  end
 end
