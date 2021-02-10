@@ -44,6 +44,6 @@ class ShoppingCart
   ### extra random stuff
 
   def total_price
-    products.reduce(0) { |memo, product| memo += product.unit_price * product.quantity }
+    products.reduce(0) { |memo, product| memo += product.total_price }
   end
 end
