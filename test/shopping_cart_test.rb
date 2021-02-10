@@ -6,6 +6,7 @@ require 'pry'
 class ShoppingTest < Minitest::Test
   def setup
     @cart = ShoppingCart.new("King Soopers", "30items")
+    #binding.pry
   end
   def test_it_exists
     assert_instance_of ShoppingCart, @cart
@@ -15,7 +16,7 @@ class ShoppingTest < Minitest::Test
     assert_equal @cart.name, 'King Soopers'
   end
   def test_it_has_capacity
-    
-    assert_equal @cart.capacity, '30'
+    @cart.change_capacity_to_int
+    assert_equal @cart.capacity, 30
   end
 end
