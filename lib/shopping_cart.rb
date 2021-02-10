@@ -25,11 +25,6 @@ class ShoppingCart
     @products.sum do |product|
       product.quantity
     end
-    # count = 0
-    # @products.each do |product|
-    #   product.quantity += 1
-    # end
-    # count
   end
 
   def is_full?
@@ -41,7 +36,12 @@ class ShoppingCart
   end
 
   def percentage_occupied
+    # require 'pry'; binding.pry
+    if (decimal_occ.round(2)) > 1.00
+      "#{((decimal_occ * 100) -100).to_i} % Over Capacity"
+    else
     (decimal_occ * 100).round(2)
+  end
   end
 
   def decimal_occ
