@@ -48,4 +48,10 @@ class ShoppingCart
   def sorted_products_by_quantity
     @products.sort {|product| product.quantity}
   end
+
+  def product_breakdown
+    @products.group_by do |product|
+      product.category
+    end
+  end
 end

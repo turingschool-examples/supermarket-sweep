@@ -84,4 +84,14 @@ class ShoppingCartTest < Minitest::Test
     result = [@product4, @product3, @product2, @product1]
     assert_equal result, @cart.sorted_products_by_quantity
   end
+
+  def test_it_can_breakdown_products
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    @cart.add_product(@product4)
+
+    result = {:meat => [@product2], :paper => [@product1, @product3], :produce => [@product4]}
+    assert_equal result, @cart.product_breakdown
+  end
 end
