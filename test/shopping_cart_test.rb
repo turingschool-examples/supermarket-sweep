@@ -57,4 +57,12 @@ class ShoppingCartTest < Minitest::Test
     assert_equal false, @cart.is_full?
   end
 
+  def test_it_can_return_an_array_of_products_by_category
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    results = [@product1, @product3]
+
+    assert_equal results, @cart.products_by_category(:paper)
+  end
 end
