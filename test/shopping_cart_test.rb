@@ -19,4 +19,8 @@ class ShoppingCartTest < Minitest::Test
   def test_it_has_a_capacity
     assert_equal "30items", @cart.capacity
   end
+
+  def test_it_has_no_products_by_default
+    assert_equal [], @cart.products
+  end
 end

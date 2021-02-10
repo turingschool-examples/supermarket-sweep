@@ -1,9 +1,11 @@
 class ShoppingCart
   attr_reader :name,
-              :capacity
+              :capacity,
+              :products
   
   def initialize(name, capacity)
     @name = name
     @capacity = capacity
+    @products = []
   end
 end
