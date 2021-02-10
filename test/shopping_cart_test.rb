@@ -70,4 +70,14 @@ class ShoppingCartTest < Minitest::Test
     expected = [product4, @product1, @product2, @product3]
     assert_equal expected, @cart.sorted_products_by_quantity
   end
+
+  def test_can_provide_product_breakdown
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    product4 = Product.new(:produce, 'apples', 0.99, '20')
+    @cart.add_product(product4)
+    expected = {:meat=>[@product2], :paper=> [@product1, @product3], :produce=> [product4]}
+    assert_equal expected, @cart.product_breakdown
+  end
 end
