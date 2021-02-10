@@ -48,7 +48,5 @@ class ShoppingCart
 
   def product_breakdown
     listed_by_category = Hash.new
-    # products_by_category(category).each do |product|
-    # listed_by_category << :category => product
   end
 end

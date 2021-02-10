@@ -138,6 +138,7 @@ class ShoppingCartTest < Minitest::Test
   end
 
   def test_it_can_break_down_by_category
+    skip
     cart = ShoppingCart.new("King Soopers", "30items")
     product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
     product2 = Product.new(:meat, 'chicken', 4.50, '2')
