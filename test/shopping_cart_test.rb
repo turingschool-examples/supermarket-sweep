@@ -110,7 +110,7 @@ class ShoppingCartTest < Minitest::Test
   end
 
   def test_it_has_product_breakdown
-    skip
+
     cart = ShoppingCart.new("King Soopers", "30items")
     product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
     product2 = Product.new(:meat, 'chicken', 4.50, '2')
@@ -121,10 +121,10 @@ class ShoppingCartTest < Minitest::Test
     cart.add_product(product2)
     cart.add_product(product3)
     cart.add_product(product4)
-    exppected = {:meat => [product2],
-                 :paper => [product1, product2],
-                 :produce => [product4]
-                }
+    expected = {:meat => [product2],
+                :paper => [product1, product3],
+                :produce => [product4]}
+
     assert_equal expected, cart.product_breakdown
   end
 end
