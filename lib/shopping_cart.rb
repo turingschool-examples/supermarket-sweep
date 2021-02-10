@@ -13,5 +13,25 @@ class ShoppingCart
 
   def details
     {name: @name, capacity: @capacity}
-  end 
+  end
+
+  def test_total_number_of_products
+    @products.reduce(0) do |sum, product|
+      sum + product.quantity
+    end
+  end
+
+  def is_full?
+    if self.test_total_number_of_products >= self.capacity
+      true
+    else
+      false
+    end
+  end
+
+  def test_products_by_category(category)
+    @products.select do |product|
+      product.category == category
+    end
+  end
 end
