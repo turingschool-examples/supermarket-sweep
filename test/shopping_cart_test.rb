@@ -65,5 +65,13 @@ class ShoppingCartTest < Minitest::Test
 
     assert_equal results, @cart.products_by_category(:paper)
   end
+
+  def test_can_return_percentage_of_remaining_space_in_cart
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+
+    assert_equal 43.33, @cart.percentage_occupied
+  end
   
 end

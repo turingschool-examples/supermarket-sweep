@@ -41,5 +41,9 @@ class ShoppingCart
   def products_by_category(category_symbol)
     @products.find_all {|product| product.category == category_symbol}
   end
-  
+
+  def percentage_occupied
+    results = ( (total_number_of_products.fdiv capacity) * 100).round(2)
+  end
+
 end
