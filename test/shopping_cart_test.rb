@@ -25,5 +25,6 @@ class ShoppingCartTest < Minitest::Test
     @cart.add_product(@product1)
     @cart.add_product(@product2)
     assert_equal [@product1, @product2], @cart.products
+    assert_equal 2, @cart.products.length
   end
 end
