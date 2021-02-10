@@ -19,12 +19,10 @@ class ShoppingCart
     details_hash = {name: name, capacity: capacity}
   end
 
-  def total_number_of_products #todo refactor w/ enumerable
-    total_num_products = 0
-    products.each do |product|
-      total_num_products += product.quantity
+  def total_number_of_products
+    products.reduce(0) do |sum, product|
+      sum += product.quantity
     end
-    total_num_products
   end
 
   def is_full?
