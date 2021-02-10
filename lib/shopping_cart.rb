@@ -14,7 +14,11 @@ class ShoppingCart
   end
 
   def details
-    {name: "#{name}", capacity: capacity.delete('items').to_i}
+    {name: "#{name}", capacity: capacity_to_number}
+  end
+
+  def capacity_to_number
+    @capacity.delete('items').to_i
   end
 
   def total_number_of_products
@@ -24,4 +28,13 @@ class ShoppingCart
     end
     total_sum
   end
+
+  def is_full?
+    if capacity_to_number > total_number_of_products
+      false
+    else
+      true
+    end
+  end
+
 end
