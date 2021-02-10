@@ -32,4 +32,11 @@ class ShoppingCartTest < Minitest::Test
     expected = {name: "King Soopers", capacity: 30}
     assert_equal expected, @cart.details
   end
+
+  def test_it_knows_total_number_of_products
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    assert_equal 13, @cart.total_number_of_products
+  end
 end
