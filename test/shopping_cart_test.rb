@@ -66,4 +66,12 @@ class ShoppingCartTest < Minitest::Test
 
     assert_equal [@product1, @product3], @cart.products_by_category(:paper)
   end
+
+  def test_it_can_calculate_the_percentage_occupied
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+
+    assert_equal 43.33, @cart.percentage_occupied
+  end
 end
