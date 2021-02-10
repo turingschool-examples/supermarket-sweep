@@ -27,7 +27,7 @@ class ShoppingCart
   end
 
   def is_full?
-    if total_number_of_products > quantity
+    if total_number_of_products > @capacity
       true
     else
       false
@@ -38,6 +38,11 @@ class ShoppingCart
     @products.find_all do |product|
       product.category == category
     end
+  end
+
+  def percentage_occupied
+   ((total_number_of_products/ @capacity.to_f) * 100).round(1)
+
   end
 
 
