@@ -24,7 +24,20 @@ class ShoppingCart
   end
 
   def products_by_category(category)
-    products.group_by { |product| product.category }[category]
+    product_breakdown[category]
   end
 
+  def percentage_occupied
+    current_total_items = products.reduce(0) { |memo, product| memo += product.quantity }
+    ratio = current_total_items / capacity.to_f * 100
+    ratio.round(2)
+  end
+
+  def sorted_product_by_quantity
+    products.sort_by(&:quantity)
+  end
+
+  def product_breakdown
+    products.sort_by(&:category).group_by {|product| product.category }
+  end
 end
