@@ -55,6 +55,6 @@ class ShoppingCartTest < Minitest::Test
     @cart.add_product(@product4)
 
     assert_equal true, @cart.is_full?
-    assert_equal 33 @cart.total_number_of_products
+    assert_equal 33, @cart.total_number_of_products
   end
 end
