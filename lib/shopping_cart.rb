@@ -5,9 +5,14 @@ class Shopping_cart
 
   def initialize(name, capacity)
     @name = name
-    @capacity = capacity
+    @capacity = self.make_number(capacity)
     @products = []
   end
+
+  def make_number(capacity)
+    capacity.delete_suffix("items").to_i
+  end
+
 
   def add_product(product)
     @products.append(product)
