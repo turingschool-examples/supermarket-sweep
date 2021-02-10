@@ -14,4 +14,17 @@ class ShoppingCart
   def details
     hash = {name: name, capacity: capacity }
   end
+
+  def total_number_of_products
+    products.reduce(0) { |memo, product| memo += product.quantity }
+  end
+
+  def is_full?
+    total_number_of_products < capacity ? false : true
+  end
+
+  def products_by_category(category)
+    products.group_by { |product| product.category }[category]
+  end
+
 end
