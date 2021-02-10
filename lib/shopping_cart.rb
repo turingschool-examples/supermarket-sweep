@@ -56,7 +56,10 @@ class ShoppingCart
     products.sort_by(&:category).group_by {|product| product.category }
   end
 
-  ### extra random stuff
+
+  ##########################
+  ### extra random stuff ###
+  ##########################
 
   # returns the total price of all items inside of the cart
   # no argument -> float
