@@ -37,4 +37,8 @@ class ShoppingCart
       product.category == category
     end
   end
+
+  def percentage_occupied #todo refactor for readability
+    ((total_number_of_products / capacity.to_f) * 100).round(2)
+  end
 end
