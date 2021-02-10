@@ -40,4 +40,10 @@ class ShoppingCart
   def product_breakdown
     products.sort_by(&:category).group_by {|product| product.category }
   end
+
+  ### extra random stuff
+
+  def total_price
+    products.reduce(0) { |memo, product| memo += product.unit_price * product.quantity }
+  end
 end
