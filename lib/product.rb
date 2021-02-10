@@ -16,6 +16,8 @@ class Product
   def is_hoarded?
     @hoard_status
   end
-  
 
+  def hoard
+    !@hoard_status
+  end
 end
