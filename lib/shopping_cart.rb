@@ -46,4 +46,7 @@ class ShoppingCart
     results = ( (total_number_of_products.fdiv capacity) * 100).round(2)
   end
 
+  def sorted_products_by_quantity
+    sorted_by_quantity = @products.sort {|product| product.quantity}
+  end
 end

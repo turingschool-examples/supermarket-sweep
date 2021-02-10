@@ -73,5 +73,13 @@ class ShoppingCartTest < Minitest::Test
 
     assert_equal 43.33, @cart.percentage_occupied
   end
-  
+
+  def test_can_return_sorted_products_by_quantity
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    results = [@product3, @product2, @product1]
+
+    assert_equal results, @cart.sorted_products_by_quantity
+  end
 end
