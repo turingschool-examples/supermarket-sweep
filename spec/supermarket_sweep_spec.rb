@@ -103,7 +103,7 @@ RSpec.describe 'Shopping Cart Spec Harness' do
       expect(@cart).to respond_to(:is_full?).with(0).argument
       expect(@cart.is_full?).to eq(false)
 
-      product5 = Product.new(:produce, 'apples', 0.99, '17')
+      product5 = Product.new(:produce, 'apples', 0.99, '16')
       @cart.add_product(product5)
       expect(@cart.is_full?).to eq(false)
 
